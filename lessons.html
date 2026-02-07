@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>AI Education Hub – Lessons</title>
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <img src="assets/logo.jpg" alt="AI Education Hub Logo" />
+        <div>
+          <strong>AI Education Hub</strong>
+          <span>Professional training • Lessons</span>
+        </div>
+      </div>
+
+      <nav>
+        <a href="index.html">Roadmap</a>
+        <a href="lessons.html">Lessons</a>
+        <a href="projects.html">Projects</a>
+        <a href="about.html">About</a>
+        <button class="pill" id="loginBtn">Login</button>
+        <button class="pill" id="logoutBtn" style="display:none">Logout</button>
+      </nav>
+    </header>
+
+    <div class="row">
+      <span class="badge" id="userBadge">Not signed in</span>
+      <span class="muted small" id="progressUpdatedAt"></span>
+    </div>
+
+    <!-- Desktop Inline Tutor -->
+    <div class="inline-tutor">
+      <div class="frame">
+        <iframe data-tutor title="AI Tutor" loading="lazy" allow="clipboard-read; clipboard-write"></iframe>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="row" style="justify-content:space-between">
+        <div>
+          <h2 style="margin:0 0 6px">Lessons</h2>
+          <p class="muted" style="margin:0">Check off lessons as you complete them. Export each lesson to PDF.</p>
+        </div>
+        <div style="min-width:220px">
+          <div class="muted small" id="lessonsBarText">0% complete</div>
+          <div class="progressbar"><div id="lessonsBarFill"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid">
+      <div class="card" id="lesson-L1">
+        <div class="row" style="justify-content:space-between">
+          <h3 style="margin:0">L1 — ML for Professionals</h3>
+          <div class="row">
+            <label class="badge">
+              <input type="checkbox" data-progress-type="lessons" data-progress-id="L1" />
+              Completed
+            </label>
+            <button class="pill" data-export-pdf="L1">Export PDF</button>
+          </div>
+        </div>
+        <p class="muted">
+          Problem framing, success metrics, baseline mindset, and practical pitfalls (leakage, drift).
+        </p>
+        <ul class="muted">
+          <li>How to define “good” with business metrics</li>
+          <li>Baselines and iteration cadence</li>
+          <li>Common failure modes in production</li>
+        </ul>
+      </div>
+
+      <div class="card" id="lesson-L2">
+        <div class="row" style="justify-content:space-between">
+          <h3 style="margin:0">L2 — GenAI Workflows (RAG)</h3>
+          <div class="row">
+            <label class="badge">
+              <input type="checkbox" data-progress-type="lessons" data-progress-id="L2" />
+              Completed
+            </label>
+            <button class="pill" data-export-pdf="L2">Export PDF</button>
+          </div>
+        </div>
+        <p class="muted">
+          Use internal docs safely: chunking, retrieval, citations, and evaluation.
+        </p>
+        <ul class="muted">
+          <li>When RAG beats fine-tuning</li>
+          <li>How to reduce hallucinations</li>
+          <li>Evaluation checklist</li>
+        </ul>
+      </div>
+
+      <div class="card" id="lesson-L3">
+        <div class="row" style="justify-content:space-between">
+          <h3 style="margin:0">L3 — Governance & Risk</h3>
+          <div class="row">
+            <label class="badge">
+              <input type="checkbox" data-progress-type="lessons" data-progress-id="L3" />
+              Completed
+            </label>
+            <button class="pill" data-export-pdf="L3">Export PDF</button>
+          </div>
+        </div>
+        <p class="muted">
+          Privacy, compliance basics, model cards, and operational controls.
+        </p>
+        <ul class="muted">
+          <li>Data handling do’s/don’ts</li>
+          <li>Human-in-the-loop review points</li>
+          <li>Monitoring and incident response</li>
+        </ul>
+      </div>
+    </div>
+
+    <footer>© <span id="y"></span> AI Education Hub</footer>
+  </div>
+
+  <!-- Mobile Tutor Button -->
+  <button class="tutor-fab" id="tutorFab">Tutor</button>
+
+  <!-- Mobile Tutor Drawer -->
+  <div class="tutor-drawer" id="tutorDrawer">
+    <div class="panel">
+      <div class="drawer-top">
+        <div class="title">AI Tutor (mobile)</div>
+        <button class="pill" id="closeTutorDrawer">Close</button>
+      </div>
+      <div class="drawer-body">
+        <iframe data-tutor title="AI Tutor Mobile" loading="lazy" allow="clipboard-read; clipboard-write"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <!-- Login Modal -->
+  <div class="modal" id="loginModal">
+    <div class="box">
+      <div class="row" style="justify-content:space-between">
+        <strong>Sign in</strong>
+        <button class="pill" id="closeLogin">Close</button>
+      </div>
+
+      <p class="muted small" style="margin-top:8px">
+        If Firebase is configured, use real login. Otherwise, “Demo login” stores progress locally per email.
+      </p>
+
+      <div class="field">
+        <label class="small muted">Email</label>
+        <input id="loginEmail" type="email" placeholder="you@company.com" />
+      </div>
+      <div class="field">
+        <label class="small muted">Password (Firebase only)</label>
+        <input id="loginPassword" type="password" placeholder="••••••••" />
+      </div>
+
+      <div class="row" style="margin-top:10px">
+        <button class="pill" id="firebaseLoginBtn">Login (Firebase)</button>
+        <button class="pill" id="firebaseSignupBtn">Create account (Firebase)</button>
+        <button class="pill" id="demoLoginBtn">Demo login</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- jsPDF CDN for PDF exports -->
+  <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+  <script>document.getElementById("y").textContent = new Date().getFullYear();</script>
+  <script src="assets/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>AI Education Hub – Projects</title>
+  <link rel="stylesheet" href="assets/style.css" />
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">
+        <img src="assets/logo.jpg" alt="AI Education Hub Logo" />
+        <div>
+          <strong>AI Education Hub</strong>
+          <span>Professional training • Projects</span>
+        </div>
+      </div>
+
+      <nav>
+        <a href="index.html">Roadmap</a>
+        <a href="lessons.html">Lessons</a>
+        <a href="projects.html">Projects</a>
+        <a href="about.html">About</a>
+        <button class="pill" id="loginBtn">Login</button>
+        <button class="pill" id="logoutBtn" style="display:none">Logout</button>
+      </nav>
+    </header>
+
+    <div class="row">
+      <span class="badge" id="userBadge">Not signed in</span>
+      <span class="muted small" id="progressUpdatedAt"></span>
+    </div>
+
+    <!-- Desktop Inline Tutor -->
+    <div class="inline-tutor">
+      <div class="frame">
+        <iframe data-tutor title="AI Tutor" loading="lazy" allow="clipboard-read; clipboard-write"></iframe>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="row" style="justify-content:space-between">
+        <div>
+          <h2 style="margin:0 0 6px">Projects</h2>
+          <p class="muted" style="margin:0">Track completion and use the tutor for troubleshooting and best practices.</p>
+        </div>
+        <div style="min-width:220px">
+          <div class="muted small" id="projectsBarText">0% complete</div>
+          <div class="progressbar"><div id="projectsBarFill"></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <div class="row" style="justify-content:space-between">
+          <h3 style="margin:0">P1 — Model Baseline Report</h3>
+          <label class="badge">
+            <input type="checkbox" data-progress-type="projects" data-progress-id="P1" />
+            Completed
+          </label>
+        </div>
+        <p class="muted">Train 2–3 models, compare metrics, write a 1-page recommendation for stakeholders.</p>
+      </div>
+
+      <div class="card">
+        <div class="row" style="justify-content:space-between">
+          <h3 style="margin:0">P2 — RAG Assistant for SOPs</h3>
+          <label class="badge">
+            <input type="checkbox" data-progress-type="projects" data-progress-id="P2" />
+            Completed
+          </label>
+        </div>
+        <p class="muted">Index policy/SOP documents and answer with citations; add an evaluation checklist.</p>
+      </div>
+
+      <div class="card">
+        <div class="row" style="justify-content:space-between">
+          <h3 style="margin:0">P3 — Governance Checklist</h3>
+          <label class="badge">
+            <input type="checkbox" data-progress-type="projects" data-progress-id="P3" />
+            Completed
+          </label>
+        </div>
+        <p class="muted">Create a lightweight governance workflow: data privacy, approval gates, monitoring plan.</p>
+      </div>
+    </div>
+
+    <footer>© <span id="y"></span> AI Education Hub</footer>
+  </div>
+
+  <!-- Mobile Tutor Button -->
+  <button class="tutor-fab" id="tutorFab">Tutor</button>
+
+  <!-- Mobile Tutor Drawer -->
+  <div class="tutor-drawer" id="tutorDrawer">
+    <div class="panel">
+      <div class="drawer-top">
+        <div class="title">AI Tutor (mobile)</div>
+        <button class="pill" id="closeTutorDrawer">Close</button>
+      </div>
+      <div class="drawer-body">
+        <iframe data-tutor title="AI Tutor Mobile" loading="lazy" allow="clipboard-read; clipboard-write"></iframe>
+      </div>
+    </div>
+  </div>
+
+  <!-- Login Modal -->
+  <div class="modal" id="loginModal">
+    <div class="box">
+      <div class="row" style="justify-content:space-between">
+        <strong>Sign in</strong>
+        <button class="pill" id="closeLogin">Close</button>
+      </div>
+
+      <p class="muted small" style="margin-top:8px">
+        If Firebase is configured, use real login. Otherwise, “Demo login” stores progress locally per email.
+      </p>
+
+      <div class="field">
+        <label class="small muted">Email</label>
+        <input id="loginEmail" type="email" placeholder="you@company.com" />
+      </div>
+      <div class="field">
+        <label class="small muted">Password (Firebase only)</label>
+        <input id="loginPassword" type="password" placeholder="••••••••" />
+      </div>
+
+      <div class="row" style="margin-top:10px">
+        <button class="pill" id="firebaseLoginBtn">Login (Firebase)</button>
+        <button class="pill" id="firebaseSignupBtn">Create account (Firebase)</button>
+        <button class="pill" id="demoLoginBtn">Demo login</button>
+      </div>
+    </div>
+  </div>
+
+  <script>document.getElementById("y").textContent = new Date().getFullYear();</script>
+  <script src="assets/app.js"></script>
+</body>
+</html>

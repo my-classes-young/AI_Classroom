@@ -1,3 +1,4 @@
+```
 /ai-edu-hub
 ├── index.html
 ├── lessons.html
@@ -9,3 +10,4 @@
     ├── style.css
     ├── app.js
     └── logo.jpg
+```
